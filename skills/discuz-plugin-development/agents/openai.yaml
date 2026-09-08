@@ -1,0 +1,4 @@
+interface:
+  display_name: "Discuz Plugin Dev"
+  short_description: "Build and maintain Discuz plugins safely"
+  default_prompt: "Use $discuz-plugin-development to plan and implement a Discuz plugin for this codebase."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Git Auto Commit"
+  short_description: "Commit validated task changes automatically"
+  default_prompt: "Use $git-auto-commit to validate and locally commit this task when it reaches a safe checkpoint."

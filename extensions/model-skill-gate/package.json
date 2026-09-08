@@ -1,0 +1,28 @@
+{
+  "name": "model-skill-gate",
+  "version": "0.1.0",
+  "description": "Gate skill loading by model in pi: only matched models (e.g. deepseek) get superpowers injected into the system prompt; warns when switching models mid-session",
+  "type": "module",
+  "license": "MIT",
+  "keywords": ["pi-package", "extension", "skills", "model-gate"],
+  "files": ["src/", "README.md", "LICENSE"],
+  "pi": {
+    "extensions": ["./src/index.ts"]
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "npm run typecheck && npm test"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "^0.84.4",
+    "@earendil-works/pi-tui": "^0.84.4",
+    "@types/node": "^22.19.19",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.9"
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  }
+}

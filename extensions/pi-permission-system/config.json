@@ -1,0 +1,161 @@
+{
+  "$schema": "https://raw.githubusercontent.com/gotgenes/pi-packages/refs/heads/main/packages/pi-permission-system/schemas/permissions.schema.json",
+  "debugLog": false,
+  "permissionReviewLog": false,
+  "yoloMode": false,
+  "permission": {
+    "*": "allow",
+    "grep": "deny",
+    "find": "deny",
+    "external_directory": {
+      "*": "allow",
+      "~/.gnupg/*": "ask",
+      "~/.aws/*": "ask",
+      "~/.kube/*": "ask",
+      "~/.netrc": "ask",
+      "~/.config/gh/*": "ask",
+      "~/Library/Keychains/*": "ask"
+    },
+    "path": {
+      "*": "allow",
+      "*.env": {
+        "action": "deny",
+        "reason": "Denied: .env files may hold credentials. If you only need key names, use rg -o '^[A-Za-z_][A-Za-z0-9_]*=' and never read the values"
+      },
+      "*.env.*": {
+        "action": "deny",
+        "reason": "Denied: .env.* files may hold credentials. If you only need key names, use rg -o '^[A-Za-z_][A-Za-z0-9_]*=' and never read the values"
+      },
+      "*.env.example": "allow",
+      "~/.ssh/*": {
+        "action": "deny",
+        "reason": "Denied: private keys and config under ~/.ssh"
+      },
+      "~/.pi/agent/auth.json": {
+        "action": "deny",
+        "reason": "Denied: pi credential file (contains API keys)"
+      },
+      "~/.pi/agent/models.json": {
+        "action": "deny",
+        "reason": "Denied: pi model config (may contain endpoints and credentials)"
+      },
+      "~/.pi/agent/models-store.json": {
+        "action": "deny",
+        "reason": "Denied: pi model cache (may contain endpoints and credentials)"
+      },
+      "~/.pi/agent/settings.json": "ask",
+      "~/.pi/agent/trust.json": "ask",
+      "~/.pi/agent/SYSTEM.md": "ask",
+      "~/.pi/agent/APPEND_SYSTEM.md": "ask",
+      "~/.pi/agent/npm/package.json": "ask",
+      "~/.pi/agent/npm/package-lock.json": "ask",
+      "~/.pi/agent/extensions/pi-permission-system/config.json": "ask"
+    },
+    "path_write": {
+      "*$*": {
+        "action": "deny",
+        "reason": "Denied: path contains an unresolved shell variable ($DIR and friends). An unset variable expands to / or /* (rm -rf $DIR/ becomes rm -rf /). $HOME and $PWD are resolved by the extension and unaffected. Run echo to confirm the value first, then rewrite the command with a literal path"
+      }
+    },
+    "bash": {
+      "*": "allow",
+      "rg *": "allow",
+      "fd *": "allow",
+      "rm *": "ask",
+      "rm /tmp/*": "allow",
+      "rm -* /tmp/*": "allow",
+      "rm /private/tmp/*": "allow",
+      "rm -* /private/tmp/*": "allow",
+      "rm *..*": "ask",
+      "rm -* /tmp/": "ask",
+      "rm -* /private/tmp/": "ask",
+      "\\rm *": "ask",
+      "/bin/rm *": "ask",
+      "/usr/bin/rm *": "ask",
+      "command rm *": "ask",
+      "rmdir *": "ask",
+      "mv *": "ask",
+      "dd *of=/dev/sd*": "ask",
+      "dd *of=/dev/hd*": "ask",
+      "dd *of=/dev/nvme*": "ask",
+      "dd *of=/dev/disk*": "ask",
+      "dd *of=/dev/rdisk*": "ask",
+      "dd *of=*": "ask",
+      "sudo *": "ask",
+      "chmod 777 *": "ask",
+      "chmod 0777 *": "ask",
+      "chmod a+rwx *": "ask",
+      "chmod * 777 *": "ask",
+      "chown *": "ask",
+      "shred *": "ask",
+      "truncate *": "ask",
+      "git push -f*": "ask",
+      "git push * -f*": "ask",
+      "git push *--force*": "ask",
+      "git push *--mirror*": "ask",
+      "git push * +*": "ask",
+      "git push * :*": "ask",
+      "git push -d *": "ask",
+      "git push *--delete*": "ask",
+      "git -C * push *-f*": "ask",
+      "git -C * push *--mirror*": "ask",
+      "git -C * push * +*": "ask",
+      "git --no-pager push *-f*": "ask",
+      "git --no-pager push *--mirror*": "ask",
+      "git --no-pager push * +*": "ask",
+      "git reset --hard *": "ask",
+      "git clean -*": "ask",
+      "git checkout -- *": "ask",
+      "git restore *": "ask",
+      "git branch -D *": "ask",
+      "git stash drop *": "ask",
+      "git stash clear *": "ask",
+      "npm publish *": "ask",
+      "npm -* publish*": "ask",
+      "pnpm publish *": "ask",
+      "pnpm -* publish*": "ask",
+      "bun publish*": "ask",
+      "deno publish*": "ask",
+      "yarn npm publish *": "ask",
+      "cargo publish *": "ask",
+      "twine upload *": "ask",
+      "gh release create *": "ask",
+      "gh release delete *": "ask",
+      "sh": "ask",
+      "sh *": "ask",
+      "bash": "ask",
+      "bash *": "ask",
+      "zsh": "ask",
+      "zsh *": "ask",
+      "dash": "ask",
+      "dash *": "ask",
+      "fish": "ask",
+      "fish *": "ask",
+      "*:(){*": "ask",
+      "grep *": {
+        "action": "deny",
+        "reason": "Denied by policy: bash grep is blocked. Use ffgrep/fffind to locate things; for exhaustive or audit scans that need deterministic full output use rg -uu --sort path (-uu disables ignore and hidden-file skipping, --sort path makes order reproducible) or a python3 script"
+      },
+      "find *": {
+        "action": "deny",
+        "reason": "Denied by policy: bash find is blocked. Use fffind or fd to find files; for full enumeration use fd -H -I -u or rg -uu --files --sort path"
+      },
+      "truncate *$*": {
+        "action": "deny",
+        "reason": "Denied: truncate target must not use a shell variable. An unset variable degrades the target to the root directory. Run echo to confirm the value first, then rewrite with a literal path"
+      },
+      "shred *$*": {
+        "action": "deny",
+        "reason": "Denied: shred target must not use a shell variable. An unset variable degrades the target to the root directory. Run echo to confirm the value first, then rewrite with a literal path"
+      },
+      "dd *$*": {
+        "action": "deny",
+        "reason": "Denied: dd arguments must not use a shell variable. An unset variable makes of= point at the root directory. Run echo to confirm the value first, then rewrite with a literal path"
+      },
+      "git clean*$*": {
+        "action": "deny",
+        "reason": "Denied: git clean arguments must not use a shell variable. An unset variable silently widens the cleanup scope. Run echo to confirm the value first, then rewrite with a literal path"
+      }
+    }
+  }
+}

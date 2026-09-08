@@ -1,0 +1,3 @@
+interface:
+  display_name: "Plan Loop"
+  short_description: "Close the plan-phase loop: brainstorm -> grill -> plan, with gates and re-entry"

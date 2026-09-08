@@ -1,0 +1,44 @@
+# ===== secrets / credentials: never commit =====
+auth.json
+models.json
+models-store.json
+web-push.json
+mcp-oauth/
+*.pem
+*.key
+*credentials*
+*secret*
+
+# ===== runtime state / caches =====
+sessions/
+state/
+fff/
+npm/
+bin/
+backups/
+pi-cache-optimizer-stats.d/
+mcp-cache.json
+mcp-onboarding.json
+pi-switch-cache.json
+pi-cache-optimizer-fix-receipt.json
+extensions/*/logs/
+extensions/*/global-approvals.json
+
+# ===== backups / scratch =====
+*.bak
+*.bak-*
+*.backup-*
+*.orig
+*.rej
+*.log
+
+# ===== dependencies / build output =====
+node_modules/
+dist/
+*.tsbuildinfo
+
+# ===== separate git repositories =====
+extensions/pi-guided-plan/
+
+# ===== OS / editor =====
+.DS_Store
