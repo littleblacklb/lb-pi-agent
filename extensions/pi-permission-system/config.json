@@ -5,17 +5,6 @@
   "yoloMode": false,
   "permission": {
     "*": "allow",
-    "grep": "deny",
-    "find": "deny",
-    "external_directory": {
-      "*": "allow",
-      "~/.gnupg/*": "ask",
-      "~/.aws/*": "ask",
-      "~/.kube/*": "ask",
-      "~/.netrc": "ask",
-      "~/.config/gh/*": "ask",
-      "~/Library/Keychains/*": "ask"
-    },
     "path": {
       "*": "allow",
       "*.env": {
@@ -56,6 +45,15 @@
         "action": "deny",
         "reason": "Denied: path contains an unresolved shell variable ($DIR and friends). An unset variable expands to / or /* (rm -rf $DIR/ becomes rm -rf /). $HOME and $PWD are resolved by the extension and unaffected. Run echo to confirm the value first, then rewrite the command with a literal path"
       }
+    },
+    "external_directory": {
+      "*": "allow",
+      "~/.gnupg/*": "ask",
+      "~/.aws/*": "ask",
+      "~/.kube/*": "ask",
+      "~/.netrc": "ask",
+      "~/.config/gh/*": "ask",
+      "~/Library/Keychains/*": "ask"
     },
     "bash": {
       "*": "allow",
@@ -156,6 +154,8 @@
         "action": "deny",
         "reason": "Denied: git clean arguments must not use a shell variable. An unset variable silently widens the cleanup scope. Run echo to confirm the value first, then rewrite with a literal path"
       }
-    }
+    },
+    "grep": "deny",
+    "find": "deny"
   }
 }
