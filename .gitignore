@@ -20,6 +20,7 @@ pi-cache-optimizer-stats.d/
 mcp-cache.json
 mcp-onboarding.json
 pi-switch-cache.json
+trust.json
 pi-cache-optimizer-fix-receipt.json
 extensions/*/logs/
 extensions/*/global-approvals.json
