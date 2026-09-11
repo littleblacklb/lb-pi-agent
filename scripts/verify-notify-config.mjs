@@ -15,7 +15,7 @@ const checks = [
   ["mcp_server_error stays on", cfg.events.mcp_server_error?.enabled === true],
   ["permission_request enabled (agent blocked on a permission dialog)", cfg.events.permission_request?.enabled === true],
   ["recap.enabled", cfg.recap.enabled === true],
-  ["recap.model", cfg.recap.model === "deepseek/deepseek-v4-flash-vision-exp"],
+  ["recap.model", cfg.recap.model === "deepseek/deepseek-flash"],
   ["silence.enabled=false (deliberate: keypress window swallows away-from-terminal notifications)", cfg.silenceAfterInput.enabled === false],
   ["silence.windowMs=120000 (inert while disabled)", cfg.silenceAfterInput.windowMs === 120000],
   ["silence.platforms=[native] (inert while disabled)", JSON.stringify(cfg.silenceAfterInput.platforms) === JSON.stringify(["native"])],
