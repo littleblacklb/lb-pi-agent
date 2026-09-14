@@ -1,8 +1,10 @@
-# src-hunting 安装树 sha256（70 文件，不含 .venv/__pycache__/SOURCE*/bin/）
-# 重生成 2026-09-14 15:04:15（运行期验证后修正了 3 文件）
+# src-hunting 安装树 sha256（72 文件，不含 .venv/__pycache__/SOURCE*/bin/）
+# 重生成 2026-09-14 15:21:18
 adb3da358c39e7deec1fdb78ea7447c2f308ea0d78ec558cecdb6de5f76e2573  .gitignore
 d07e761bbd22887a8dd04b62dfa44f7614f65d461ee4bd3d19584c99f3fa975e  SKILL.md
+5f8576e2452cc4fccad858e1a786e8c465d55c2c5556fa613672b8ef704a6dd8  mcp/fofa_MCP/.env
 5f8576e2452cc4fccad858e1a786e8c465d55c2c5556fa613672b8ef704a6dd8  mcp/fofa_MCP/.env.example
+59b081bf93c0f7fb9e2171940800eb56939612b4d89ce891da45459145f90c88  mcp/fofa_MCP/.env.swp
 f681cf9cd667e86aa98f31a36a24a2204178c58bb221a9970f864f78e392c150  mcp/fofa_MCP/.gitignore
 8dfda54ba2f66ab3a8ebab460f4338bbeea1fb1e0f85ce06fe3530aa3c64679b  mcp/fofa_MCP/.python-version
 5368d307423bbc8e99be03496b913f353a461f8dfbeee987be24db49d6266c0c  mcp/fofa_MCP/README.md
@@ -15,8 +17,8 @@ def239ee0e9dea35bb0fe9bfdebf53370551db1a99e9d967a1e5320b5ba0f4d7  rules/anti-ove
 f78fcd7e9c2f5faa3340435e1c4bf6de4682a1891e932dba8074e05ce27da1dd  rules/desktop-task-folder.md
 1f881524ea2acc62c4650769caeada9112d56b36f24b40e8800c220d3fdc89cd  rules/dig-scope-workflow.md
 4da05cf2f58348554cf400cbd9bbe8118e8f110ededc82c4c9dc82bb1834dbb5  rules/hunt-iter.md
-80269184b0deede46bb071346ac5e8779d4aab226dc0913a937aee14a8cc4908  rules/playwright-browser-mcp.md
-687078379b2fbcc7bcabf7cf4721a14902a809559ee2bf9319336ae35ce3b585  rules/researcher-blackbox-whitebox.md
+02711ec9662f4a1d1e522ccc92c7c916d2efad9e05c32d3061fce22c470bb67f  rules/playwright-browser-mcp.md
+d480595470b3e6e91a1bccf90bbcbfd0889ea621f7105a481c3a825216dc8006  rules/researcher-blackbox-whitebox.md
 fc10433f5f57d33762ad97cabdc7cbf597e6638e8712d47334cd68a0479e0cd8  rules/security-research-context.md
 e23c9ea2dd17a0c64f2cb88807b0a8c2396927d0e6e15a7c0f9bdabbad9426b2  rules/skill-as-boost.md
 5841817a47530b59abee73319782c3cefbfa66a6374ad2e73d58ccadac8ff87e  rules/src-value-hunting.md

@@ -55,7 +55,12 @@
    ```
    然后把三套 Key 填进 `.env`（该文件已被同目录 `.gitignore` 忽略，不进 git）。
 2. 重启 pi 后首次调用三个 MCP（`playwright` / `js-reverse` / `fofa`）会弹授权。
-3. 用浏览器前先 `bash ~/.pi/agent/skills/src-hunting/bin/chrome-9222.sh`（两个浏览器 MCP 都 attach 它的 9222）。
+3. （可选）决定 9222 上那只调试 Chrome 是否常驻后台：`curl -s http://127.0.0.1:9222/json/version`。
+
+## Agent 自行动作（不需要用户介入）
+
+- **首次浏览器操作前自己跑 `bin/chrome-9222.sh`**：它只确保 9222 上有一只可用调试 Chrome（两个浏览器 MCP 都 attach 它），幂等——9222 已在响应就立刻退出，**不杀浏览器、不清 profile**。实测直接执行脚本路径即可（命中 `permission.*: allow`，不弹审批）；写成 `bash <path>` 会命中 `bash *` = ask 而多弹一次审批。
+- 快照/输出默认落在 MCP 的 `--output-dir`；需要当证据留档时自己拷进任务目录的 `{名}_dig/`。
 
 ## 运行期实测（2026-09-14 本机，非静态推断）
 
