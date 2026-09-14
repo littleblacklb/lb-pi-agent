@@ -1,10 +1,9 @@
-# src-hunting 安装树 sha256（72 文件，不含 .venv/__pycache__/SOURCE*/bin/）
-# 重生成 2026-09-14 15:21:18
+# src-hunting 安装树 sha256（70 文件；不含 .venv/__pycache__/SOURCE*/bin/ 与隐藏文件）
+# 本清单永不包含凭证类隐藏文件（如 .env / 编辑器交换文件）
+# 重生成 2026-09-14 15:21:49
 adb3da358c39e7deec1fdb78ea7447c2f308ea0d78ec558cecdb6de5f76e2573  .gitignore
 d07e761bbd22887a8dd04b62dfa44f7614f65d461ee4bd3d19584c99f3fa975e  SKILL.md
-5f8576e2452cc4fccad858e1a786e8c465d55c2c5556fa613672b8ef704a6dd8  mcp/fofa_MCP/.env
 5f8576e2452cc4fccad858e1a786e8c465d55c2c5556fa613672b8ef704a6dd8  mcp/fofa_MCP/.env.example
-59b081bf93c0f7fb9e2171940800eb56939612b4d89ce891da45459145f90c88  mcp/fofa_MCP/.env.swp
 f681cf9cd667e86aa98f31a36a24a2204178c58bb221a9970f864f78e392c150  mcp/fofa_MCP/.gitignore
 8dfda54ba2f66ab3a8ebab460f4338bbeea1fb1e0f85ce06fe3530aa3c64679b  mcp/fofa_MCP/.python-version
 5368d307423bbc8e99be03496b913f353a461f8dfbeee987be24db49d6266c0c  mcp/fofa_MCP/README.md
