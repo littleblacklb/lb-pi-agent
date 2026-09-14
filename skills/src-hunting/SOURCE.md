@@ -61,17 +61,26 @@
 
 备份：`extensions/pi-permission-system/config.json.bak-20260914-before-srchunt`。实测：`bash <skill>/bin/chrome-9222.sh` 不再弹审批。
 
-## fofa 实测（2026-09-14，用户已配置 Key）
+## fofa 实测
 
-- 返回：`{"error":"限流/配额: [820031] F点余额不足","account":"primary","http_status":200,"account_tried":["primary"]}`
-- 判读：**认证与链路全部正常**（HTTP 200 + FOFA 业务码），Key 有效；主号 **F 点余额为 0**，所以查询无结果。
-- `account_tried` 只有 `primary` → `.env` 里 backup / backup2 的 KEY 为空（`fofa.py::_account_list()` 用 `if a[2]` 过滤空值）。
-- `_is_rate_limited()` 把 `"F点"` 归入限流判定 → 余额不足本会切号，但没有备用号可切。
-- 待办：给主号充 F 点，或在 `.env` 补 `FOFA_EMAIL_BACKUP` / `FOFA_KEY_BACKUP`（补上即自动切换）。
+### 阶段 1：官方接口（主号）
+
+- 返回 `{"error":"限流/配额: [820031] F点余额不足","account":"primary","http_status":200,"account_tried":["primary"]}`
+- 判读：认证与链路正常（HTTP 200 + FOFA 业务码）、Key 有效；主号 F 点为 0，故无结果；backup/backup2 未配置（`_account_list()` 用 `if a[2]` 过滤空 Key），所以无处切号。
+
+### 阶段 2：第三方代理接口（已跑通）
+
+- `.env`：`FOFA_API_BASE=http://map.shenxd.top/fofa/test_fofa/fofa1_api.php`，主号换成第三方给的 email/key
+- 生效确认（让程序自己解析、不读文件、不打印凭据）：`fofa.FOFA_API_BASE` = 上述 URL；生效账号 1 个（primary）
+- 实测 1 `domain="example.com"` → `count=5`、`query_consumed=0`、`account_used=primary`，真实资产（172.66.147.243 / 104.20.23.154 等）
+- 实测 2 `domain="qq.com"` → 总匹配 `size=8088`，本次 `count=100`（fofa.py 请求的 `size=100` 生效）
+- 字段语义：第三方把 `size` 当「匹配总数」、`count` 当「本次返回条数」
+- 探测（无凭据阶段）：`fofa1_api.php` 存活、参数名 `qbase64` 与官方一致；假凭据返回 `API密钥无效或已过期` → 真实 FOFA 后端；`fofa2_api.php` 404
+- 切回官方：清空 `FOFA_API_BASE` + 换回官方 email/key（base 全局，两者不能混用）
 
 ## 用户待办
 
-> 状态：`.env` **已由用户创建并填值**（`chmod 600` ✅、被 `.gitignore` 忽略 ✅、vim 交换文件已清）；fofa 已实测可用，仅主号 F 点余额为 0。
+> 状态：`.env` 已由用户配置（`chmod 600` ✅、被 `.gitignore` 忽略 ✅）；**fofa 已跑通（当前走第三方代理接口）**。
 
 1. **创建 FOFA 凭证文件** — 已完成（命令备查：`cd ~/.pi/agent/skills/src-hunting/mcp/fofa_MCP && cp .env.example .env && chmod 600 .env`）
 2. 重启 pi 后首次调用三个 MCP（`playwright` / `js-reverse` / `fofa`）会弹授权。
