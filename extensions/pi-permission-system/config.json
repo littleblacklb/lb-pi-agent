@@ -153,7 +153,16 @@
       "git clean*$*": {
         "action": "deny",
         "reason": "Denied: git clean arguments must not use a shell variable. An unset variable silently widens the cleanup scope. Run echo to confirm the value first, then rewrite with a literal path"
-      }
+      },
+      "bash /Users/lb/.pi/agent/skills/src-hunting/bin/*": "allow",
+      "sh /Users/lb/.pi/agent/skills/src-hunting/bin/*": "allow",
+      "zsh /Users/lb/.pi/agent/skills/src-hunting/bin/*": "allow",
+      "/Users/lb/.pi/agent/skills/src-hunting/bin/*": "allow",
+      "uv run --directory /Users/lb/.pi/agent/skills/src-hunting/*": "allow",
+      "bash /Users/lb/src-hunt/*": "allow",
+      "sh /Users/lb/src-hunt/*": "allow",
+      "zsh /Users/lb/src-hunt/*": "allow",
+      "/Users/lb/src-hunt/*": "allow"
     },
     "grep": "deny",
     "find": "deny"

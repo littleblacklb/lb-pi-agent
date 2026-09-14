@@ -47,16 +47,33 @@
    - bash `grep`/`find` 配方（本机权限策略硬拒；12 文件约 50 处）
 4. 报告换行按用户决定由 CRLF 改为 **LF**。
 
+## 本机权限调整（2026-09-14，用户要求）
+
+在 `~/.pi/agent/extensions/pi-permission-system/config.json` 的 `permission.bash` 末尾追加（该扩展用 `findLast` 语义，后写覆盖先写，所以位于 `bash *`=ask 之后生效）：
+
+| 规则 | 判定 |
+|---|---|
+| `bash / sh / zsh <skill>/bin/*`、直接执行 `<skill>/bin/*` | **allow** |
+| `bash / sh / zsh /Users/lb/src-hunt/*`、直接执行同路径 | **allow** |
+| `uv run --directory <skill>/*` | **allow** |
+| 其余 `bash …`（含 `bash -c`）、`sh …` | 仍 **ask** |
+| `rm *` / `mv *` / `sudo *` / `git reset --hard` 等 | 仍按原策略（ask） |
+
+备份：`extensions/pi-permission-system/config.json.bak-20260914-before-srchunt`。实测：`bash <skill>/bin/chrome-9222.sh` 不再弹审批。
+
+## fofa 实测（2026-09-14，用户已配置 Key）
+
+- 返回：`{"error":"限流/配额: [820031] F点余额不足","account":"primary","http_status":200,"account_tried":["primary"]}`
+- 判读：**认证与链路全部正常**（HTTP 200 + FOFA 业务码），Key 有效；主号 **F 点余额为 0**，所以查询无结果。
+- `account_tried` 只有 `primary` → `.env` 里 backup / backup2 的 KEY 为空（`fofa.py::_account_list()` 用 `if a[2]` 过滤空值）。
+- `_is_rate_limited()` 把 `"F点"` 归入限流判定 → 余额不足本会切号，但没有备用号可切。
+- 待办：给主号充 F 点，或在 `.env` 补 `FOFA_EMAIL_BACKUP` / `FOFA_KEY_BACKUP`（补上即自动切换）。
+
 ## 用户待办
 
-> 状态：`.env` 已由用户创建（`chmod 600` ✅，已被 `.gitignore` 忽略）；填完 Key 后需重启 pi 或重连 `fofa` server 才生效（`fofa.py` 在 server 启动时 `load_dotenv()`）。
-> 若编辑时用过 vim，记得删掉同目录的 `.env.swp`（交换文件里含 Key 明文副本）。
+> 状态：`.env` **已由用户创建并填值**（`chmod 600` ✅、被 `.gitignore` 忽略 ✅、vim 交换文件已清）；fofa 已实测可用，仅主号 F 点余额为 0。
 
-1. **创建 FOFA 凭证文件**（pi 的权限策略拦住了 agent 写 `.env` 的任何操作，需你手动一条命令）：
-   ```bash
-   cd ~/.pi/agent/skills/src-hunting/mcp/fofa_MCP && cp .env.example .env && chmod 600 .env
-   ```
-   然后把三套 Key 填进 `.env`（该文件已被同目录 `.gitignore` 忽略，不进 git）。
+1. **创建 FOFA 凭证文件** — 已完成（命令备查：`cd ~/.pi/agent/skills/src-hunting/mcp/fofa_MCP && cp .env.example .env && chmod 600 .env`）
 2. 重启 pi 后首次调用三个 MCP（`playwright` / `js-reverse` / `fofa`）会弹授权。
 3. （可选）决定 9222 上那只调试 Chrome 是否常驻后台：`curl -s http://127.0.0.1:9222/json/version`。
 
