@@ -49,6 +49,9 @@
 
 ## 用户待办
 
+> 状态：`.env` 已由用户创建（`chmod 600` ✅，已被 `.gitignore` 忽略）；填完 Key 后需重启 pi 或重连 `fofa` server 才生效（`fofa.py` 在 server 启动时 `load_dotenv()`）。
+> 若编辑时用过 vim，记得删掉同目录的 `.env.swp`（交换文件里含 Key 明文副本）。
+
 1. **创建 FOFA 凭证文件**（pi 的权限策略拦住了 agent 写 `.env` 的任何操作，需你手动一条命令）：
    ```bash
    cd ~/.pi/agent/skills/src-hunting/mcp/fofa_MCP && cp .env.example .env && chmod 600 .env
