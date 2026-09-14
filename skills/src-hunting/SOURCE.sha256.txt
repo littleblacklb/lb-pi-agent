@@ -1,13 +1,13 @@
 # src-hunting 安装树 sha256（70 文件；不含 .venv/__pycache__/SOURCE*/bin/ 与隐藏文件）
-# 本清单永不包含凭证类隐藏文件（如 .env / 编辑器交换文件）
-# 重生成 2026-09-14 15:21:49
+# 本清单永不包含凭证类隐藏文件（如编辑器交换文件与运行时凭证）
+# 重生成 2026-09-14 15:52:28
 adb3da358c39e7deec1fdb78ea7447c2f308ea0d78ec558cecdb6de5f76e2573  .gitignore
 d07e761bbd22887a8dd04b62dfa44f7614f65d461ee4bd3d19584c99f3fa975e  SKILL.md
-5f8576e2452cc4fccad858e1a786e8c465d55c2c5556fa613672b8ef704a6dd8  mcp/fofa_MCP/.env.example
+87ef9d33ceec12f491fbbef62e107e7238189f9ee47962f5d179d2852ac55728  mcp/fofa_MCP/.env.example
 f681cf9cd667e86aa98f31a36a24a2204178c58bb221a9970f864f78e392c150  mcp/fofa_MCP/.gitignore
 8dfda54ba2f66ab3a8ebab460f4338bbeea1fb1e0f85ce06fe3530aa3c64679b  mcp/fofa_MCP/.python-version
 5368d307423bbc8e99be03496b913f353a461f8dfbeee987be24db49d6266c0c  mcp/fofa_MCP/README.md
-a354ba8f408d5394cf33b43acb7199ff25f75d4f87e209a55645503a99625a51  mcp/fofa_MCP/fofa.py
+bec3b27cd12793af09c723d49e32a620b2f8c225ae072951632a1b335f0cf09a  mcp/fofa_MCP/fofa.py
 94a5b1786d120c68329757b9180885ef35f59e4d2e6cb38aae802fc087da91a5  mcp/fofa_MCP/fofa_accounts.md
 7cea45afc4af9f1b4bdeea7fccc195bdeeebcf56a23b27ee52c8e6ad87af6069  mcp/fofa_MCP/pyproject.toml
 2cf1e90b59c985ff2c67886861ccad353dfbd45530212d532a0580ab7901f30f  mcp/fofa_MCP/uv.lock

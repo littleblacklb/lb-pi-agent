@@ -18,7 +18,11 @@ load_dotenv()
 
 mcp = FastMCP("fofasearch")
 
-FOFA_API_BASE = "https://fofa.info/api/v1/search/all"
+# 接口地址可换：默认 FOFA 官方；第三方/自建代理用 .env 里的 FOFA_API_BASE 覆盖
+# （参数名与官方一致：email / key / qbase64 / size / fields）
+FOFA_API_BASE = (
+    os.getenv("FOFA_API_BASE", "").strip() or "https://fofa.info/api/v1/search/all"
+)
 USER_AGENT = "fofa-mcp/1.0"
 
 # Prefer process env; fall back to .env next to this file (mcp/fofa_MCP/.env).
