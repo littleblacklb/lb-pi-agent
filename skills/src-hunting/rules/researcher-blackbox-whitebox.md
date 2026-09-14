@@ -18,7 +18,7 @@ Whenever the user asks to do any of the following, **do not** use shell/`npx pla
 **Always:**
 
 1. Discover the tools through pi's MCP gateway first: `mcp` action `search` with a query like `playwright browser navigate snapshot click` (or the needed action).
-2. Call them with the returned path: `mcp` with `tool: "playwright__browser_navigate"`, `playwright__browser_snapshot`, `playwright__browser_click`, etc., or batch navigate → snapshot → click inside one `mcpScript` block.
+2. Call them with the returned path: `mcp` with `tool: "playwright_browser_navigate"`, `playwright_browser_snapshot`, `playwright_browser_click`, etc., or batch navigate → snapshot → click inside one `mcpScript` block.
 3. Before the first call, make sure the shared Chrome is up: run `~/.pi/agent/skills/src-hunting/bin/chrome-9222.sh` (idempotent; never kills a browser). The `playwright` and `js-reverse` MCP servers both attach to that Chrome on port 9222, so the login state is shared.
 4. Prefer **accessibility snapshots** over screenshots when understanding page structure; use vision/screenshot tools when visual verification is required.
 5. Keep the browser session open across multi-step tasks; do not relaunch unnecessarily.
@@ -34,14 +34,14 @@ Whenever the user asks to do any of the following, **do not** use shell/`npx pla
 Before answering browser-related requests with only text or shell:
 
 - [ ] Did I search the MCP gateway for playwright tools?
-- [ ] Did I use `playwright__*` tools for actual control?
+- [ ] Did I use `playwright_*` tools for actual control?
 - [ ] Did I avoid inventing bash one-liners to drive the browser?
 
 If any checkbox fails and the task needs a real browser, **stop and call the MCP**.
 
 ## Session expectation
 
-Playwright MCP is **always enabled** in `~/.pi/agent/mcp.json` as the server `playwright` (launched as `npx -y @playwright/mcp@latest --cdp-endpoint http://127.0.0.1:9222 --caps=vision,pdf`). It attaches to the shared Chrome instead of launching its own profile; if port 9222 is not answering, run `~/.pi/agent/skills/src-hunting/bin/chrome-9222.sh` first. Treat it as a first-class tool path, not an optional plugin the user must re-enable each time.
+Playwright MCP is **always enabled** in `~/.pi/agent/mcp.json` as the server `playwright` (launched as `npx -y @playwright/mcp@latest --cdp-endpoint http://127.0.0.1:9222 --output-dir /Users/lb/Library/Caches/pi-playwright/output --caps=vision,pdf`). It attaches to the shared Chrome instead of launching its own profile; if port 9222 is not answering, run `~/.pi/agent/skills/src-hunting/bin/chrome-9222.sh` first. Treat it as a first-class tool path, not an optional plugin the user must re-enable each time.
 ） | 不可信输入最密集 |
 | 3 | 历史 CVE 相邻代码（读修复 commit → 同模块） | 同类错误会重复 |
 | 4 | 新功能 / 新 API | 测试不充分 |

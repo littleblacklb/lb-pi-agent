@@ -57,6 +57,18 @@
 2. 重启 pi 后首次调用三个 MCP（`playwright` / `js-reverse` / `fofa`）会弹授权。
 3. 用浏览器前先 `bash ~/.pi/agent/skills/src-hunting/bin/chrome-9222.sh`（两个浏览器 MCP 都 attach 它的 9222）。
 
+## 运行期实测（2026-09-14 本机，非静态推断）
+
+| 检查 | 结果 |
+|---|---|
+| MCP 网关注册 | `mcp({})` → 3/3 server 已注册（lazy connect，初始均 disconnected） |
+| playwright | 连接成功，**31 工具**；`playwright_browser_navigate https://example.com` → 200，snapshot 正常 |
+| js-reverse | 连接成功，**24 工具**；attach 同一只 9222 Chrome：`select_page` 能看到 playwright 打开的页面，`list_network_requests` 抓到 `GET https://example.com/?pi_mcp_test=1 → 200`，`list_scripts` 见 22 个脚本，`evaluate_script`（需 `confirm=true`）正常返回 |
+| fofa | 连接成功，1 工具 `fofa_get_alerts`；无 Key 时返回指向新 `.env` 路径的中文报错 |
+| `bin/chrome-9222.sh` | 实跑成功：Chrome 153 起在 9222，profile 建于 `~/Library/Caches/pi-playwright/profile`（幂等复查会直接复用） |
+| 文档工具名一致性 | skill 内引用的 10 个工具名与实测**完全一致**；`fofa__get_alerts`（双下划线）已改正为 `fofa_get_alerts` |
+| 待重启生效 | `mcp.json` 新增的 `--output-dir` 未在运行中的 server 进程生效（`ps` 核对 args 无此项）→ 重启 pi 后输出移出仓库；当前已用 `.gitignore` 兜底 `<cwd>/.playwright-mcp/` 与 `mcp-npx-cache.json` |
+
 ## 复核对账命令
 
 ```bash

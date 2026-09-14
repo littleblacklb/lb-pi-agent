@@ -33,6 +33,10 @@ extensions/*/global-approvals.json
 *.rej
 *.log
 
+# MCP 运行时产物（浏览器快照 / npx 解析缓存）
+.playwright-mcp/
+mcp-npx-cache.json
+
 # ===== dependencies / build output =====
 node_modules/
 dist/

@@ -7,6 +7,8 @@
         "@playwright/mcp@latest",
         "--cdp-endpoint",
         "http://127.0.0.1:9222",
+        "--output-dir",
+        "/Users/lb/Library/Caches/pi-playwright/output",
         "--caps=vision,pdf"
       ]
     },

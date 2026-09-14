@@ -1,5 +1,5 @@
 # src-hunting 安装树 sha256（70 文件，不含 .venv/__pycache__/SOURCE*/bin/）
-# 生成时间 2026-09-14 01:24:20
+# 重生成 2026-09-14 15:04:15（运行期验证后修正了 3 文件）
 adb3da358c39e7deec1fdb78ea7447c2f308ea0d78ec558cecdb6de5f76e2573  .gitignore
 d07e761bbd22887a8dd04b62dfa44f7614f65d461ee4bd3d19584c99f3fa975e  SKILL.md
 5f8576e2452cc4fccad858e1a786e8c465d55c2c5556fa613672b8ef704a6dd8  mcp/fofa_MCP/.env.example
@@ -15,8 +15,8 @@ def239ee0e9dea35bb0fe9bfdebf53370551db1a99e9d967a1e5320b5ba0f4d7  rules/anti-ove
 f78fcd7e9c2f5faa3340435e1c4bf6de4682a1891e932dba8074e05ce27da1dd  rules/desktop-task-folder.md
 1f881524ea2acc62c4650769caeada9112d56b36f24b40e8800c220d3fdc89cd  rules/dig-scope-workflow.md
 4da05cf2f58348554cf400cbd9bbe8118e8f110ededc82c4c9dc82bb1834dbb5  rules/hunt-iter.md
-f17a462ab74bad4aecf0fb751d6c3df020f6dab4534440a717f5ffcc88b6aadf  rules/playwright-browser-mcp.md
-41727850d48d5614e27ff1e585183c47397552cf298722f1646bac3588928ce7  rules/researcher-blackbox-whitebox.md
+80269184b0deede46bb071346ac5e8779d4aab226dc0913a937aee14a8cc4908  rules/playwright-browser-mcp.md
+687078379b2fbcc7bcabf7cf4721a14902a809559ee2bf9319336ae35ce3b585  rules/researcher-blackbox-whitebox.md
 fc10433f5f57d33762ad97cabdc7cbf597e6638e8712d47334cd68a0479e0cd8  rules/security-research-context.md
 e23c9ea2dd17a0c64f2cb88807b0a8c2396927d0e6e15a7c0f9bdabbad9426b2  rules/skill-as-boost.md
 5841817a47530b59abee73319782c3cefbfa66a6374ad2e73d58ccadac8ff87e  rules/src-value-hunting.md
@@ -60,7 +60,7 @@ c10e7843485936cbbc79a56f50417d06ef00689996862b853a64259c796ee4fe  知识库/open
 c14d7355ca236c88fabd75f87d710e11e49df39a65bae553b6dc8cb061ebe108  知识库/path-traversal-lfi-test.md
 cfed96a51996ab703ba2416053bdd6869c7a8636993adf7ad77d4c871597b8d2  知识库/prototype-pollution-test.md
 abd8dc078283410715adc584c7cfb8ee892c0b9671275e7f150ef865a3ff0e9a  知识库/race-condition-test.md
-62034d6b14a19e9179ce14f1ef5ba4539273a9d60a538860b4465b74ed33557e  知识库/recon-methodology.md
+a686c3c1844727c036281a43fbc83d3b636e0f1264dea404cf20e600650e189c  知识库/recon-methodology.md
 065b40171213d250f9343a7dd34d402d064e98d322ab1529325b0691164708c3  知识库/ssrf-test.md
 10b4c4eed53ed720d9ae369fd36e8cdb525de7092bf84eae66cc96da4af0e53a  知识库/subdomain-takeover-test.md
 937764587e4958655867b020f7dd20f10e53a95346aeabf91815a6268f470e62  知识库/type-juggling-test.md
