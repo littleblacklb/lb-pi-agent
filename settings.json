@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.85.1",
+  "lastChangelogVersion": "0.87.1",
   "theme": "dark",
   "packages": [
     "npm:pi-observational-memory",
@@ -37,13 +37,13 @@
     "version": 1,
     "migratedAt": "2026-08-17T05:57:27.921Z"
   },
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-6-astra",
-  "defaultThinkingLevel": "xhigh",
+  "defaultProvider": "commandcode",
+  "defaultModel": "deepseek/deepseek-v4.1-flash",
+  "defaultThinkingLevel": "low",
   "observational-memory": {
     "model": {
-      "provider": "deepseek",
-      "id": "deepseek-flash",
+      "provider": "commandcode",
+      "id": "deepseek/deepseek-v4.1-flash",
       "thinking": "low"
     }
   },
