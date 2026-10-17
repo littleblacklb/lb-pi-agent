@@ -1,3 +1,7 @@
+## 配置迁移入口（仅显式请求时）
+
+仅当用户明确要求安装、迁移或采用本仓库配置时，先阅读本文件所在目录的 `docs/migration.md` 与 `docs/dependencies.md`，确认目标环境、功能选择和变更预览后再执行。日常任务不触发初始化；不得默认覆盖已有配置、启用禁用资源、复制凭据/授权状态或执行通知补丁。
+
 ## User engineering operating profile
 
 Use these preferences as tie-breakers, not as a mandatory checklist. Do not add exploration, validation, or ceremony merely to demonstrate compliance. Seek minimum sufficient evidence. Precedence is: the current user request and explicit constraints, repository/project instructions, current code/API/runtime/test evidence, this profile, then historical memory.
