@@ -42,8 +42,5 @@ node_modules/
 dist/
 *.tsbuildinfo
 
-# ===== separate git repositories =====
-extensions/pi-guided-plan/
-
 # ===== OS / editor =====
 .DS_Store
