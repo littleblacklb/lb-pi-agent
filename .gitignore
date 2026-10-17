@@ -10,6 +10,7 @@ mcp-oauth/
 *secret*
 
 # ===== runtime state / caches =====
+.planning/
 sessions/
 state/
 fff/
