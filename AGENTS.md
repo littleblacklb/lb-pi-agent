@@ -23,6 +23,16 @@ Use these preferences as tie-breakers, not as a mandatory checklist. Do not add 
 - Report what passed, failed, was not run, and remains unresolved; label hypotheses and the exact validation boundary. Inspect task-owned diffs and staged contents once at the relevant checkpoint, and do not repeatedly poll unchanged status or reread unrelated files.
 - For diagnosis, preserve focused runtime/log evidence before destructive reset or speculative modification when practical. Distinguish clean termination from crashes, correlation from causation, and negative evidence from proof; do not state an unconfirmed root cause as fact.
 
+### PDF reading preference
+
+- Prefer the existing text layer: use pi-pdf `pdf_info` then `pdf_extract_text` with bounded page ranges. Preserve page references; use `pdf_extract_tables` when structured tables are needed.
+- For empty/garbled text, image-only pages, diagrams, or layout-dependent content, render only the relevant pages and use the image-capable model via `read`. A selectable text layer does not imply that figures are covered. OCR is a secondary fallback, not the default; no standalone OCR engine was installed with pi-pdf.
+- Installed pi-pdf 1.0.1 ignores `pdf_to_images` page/DPI arguments and renders the whole document. Until fixed upstream, prefer `pdftoppm -f N -l N -scale-to 2000 -png -singlefile INPUT OUTPUT_PREFIX` and read the resulting PNG. Store derived files in a temporary/task directory, preserving the original PDF. This is an agent workflow, not automatic plugin routing.
+
+<!-- BEGIN pi-subagent-orchestration -->
+Before orchestrating subagents (dispatch, resume, model selection or fallback), read `~/.pi/agent/skills/subagent-orchestration/SKILL.md`; workers follow their assigned role and never delegate.
+<!-- END pi-subagent-orchestration -->
+
 ### Safety
 
 - Never expose or print credentials, cookies, tokens, CSRF material, signatures, secrets, or session headers. Keep them out of prompts, logs, source, generated artifacts, and memory; use authorized secure authentication channels and sanitize operational evidence before storing or reporting it.

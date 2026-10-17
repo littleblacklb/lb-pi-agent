@@ -1,0 +1,14 @@
+{
+  "maxConcurrent": 2,
+  "maxConcurrentForeground": 1,
+  "maxSubagentDepth": 1,
+  "backgroundByDefault": true,
+  "workflowsEnabled": false,
+  "schedulingEnabled": false,
+  "agentMentions": "off",
+  "disableDefaultAgents": true,
+  "fallbackSubagent": "none",
+  "rememberAgents": true,
+  "showModel": true,
+  "toolDescriptionMode": "custom"
+}
